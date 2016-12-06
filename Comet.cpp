@@ -64,7 +64,7 @@ void Comet::Collided(int objectID)
 {
 	if(objectID == BORDER)
 	{
-		TakeLife();
+		//TakeLife();
 	}
 
 	if(objectID != ENEMY)

@@ -26,6 +26,9 @@
 #include "Background.h"
 #include "Globals.h"
 
+#include <iostream>
+using namespace std;
+
 bool keys[] = {false, false, false, false, false};
 enum KEYS{UP, DOWN, LEFT, RIGHT, SPACE};
 
@@ -56,7 +59,7 @@ int main(int argc, char **argv)
 	float gameTime = 0;
 	int frames = 0;
 	int gameFPS = 0;
-
+	int counter = 0;
 	//==============================================
 	//PROJECT VARIABLES
 	//==============================================
@@ -248,27 +251,35 @@ int main(int argc, char **argv)
 			}
 			//=====================
 
-			if(state == PLAYING)
+			if (state == PLAYING)
 			{
-				if(keys[UP])
+				if (keys[UP])
 					ship->MoveUp();
-				else if(keys[DOWN])
+				else if (keys[DOWN])
 					ship->MoveDown();
 				else
 					ship->ResetAnimation(1);
 
-				if(keys[LEFT])
+				if (keys[LEFT])
 					ship->MoveLeft();
-				else if(keys[RIGHT])
+				else if (keys[RIGHT])
 					ship->MoveRight();
 				else
 					ship->ResetAnimation(0);
 
-				if(rand() % 100 == 0)
-				{
-					Comet *comet = new Comet(WIDTH, 30 + rand() % (HEIGHT - 60), cometImage, &TakeLife);
-					objects.push_back(comet);
-				}
+				if (rand() % 5 == 0){
+					Comet *comet = new Comet(WIDTH, /*30 + rand() % (HEIGHT - 60)*/ 30, cometImage, &TakeLife);
+				objects.push_back(comet);
+
+				//new Comet(WIDTH, /*30 + rand() % (HEIGHT - 60)*/ 30, cometImage, &TakeLife);
+				//objects.push_back(comet);
+			}
+					counter = 0;
+					for (iter = objects.begin(); iter != objects.end(); ++iter)
+						counter++;
+					
+					cout << counter << endl;
+
 
 				//update
 				for(iter = objects.begin(); iter != objects.end(); ++iter)

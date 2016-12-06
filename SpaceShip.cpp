@@ -94,6 +94,6 @@ void SpaceShip::ResetAnimation(int position)
 
 void SpaceShip::Collided(int objectID)
 {
-	if(objectID == ENEMY)
-		lives--;
+	//if(objectID == ENEMY)
+		//lives--;
 }
